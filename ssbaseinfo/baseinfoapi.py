@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, render_template
 from flask import request
 from waitress import serve
+from dropdata import drop
+from baseinfo import load
 import psycopg2
 
 production = True
@@ -11,6 +13,9 @@ gport = '8794'
 
 @app.route('/baseinfo')
 def info():
+    drop()
+    load(str(8745))
+    load(str(8794))
     conn = psycopg2.connect(host=ghost,
                             user='postgres',
                             password='pgsql',
