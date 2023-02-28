@@ -22,6 +22,7 @@ def load(portp):
                              password='pgsql',
                              dbname='postgres',
                              port=cPorta)
+    conn.autocommit = True
 
     with conn:
         cur01 = conn.cursor()
@@ -40,6 +41,7 @@ def load(portp):
                                      password='pgsql',
                                      dbname=curbase[0],
                                      port=cPorta)
+            conn2.autocommit = True
             with conn2:
                 cur02 = conn2.cursor()
                 try:
@@ -72,6 +74,4 @@ def load(portp):
                             cur99.execute(cInsert)
                 except Exception as e:
                     print(e)
-                    x =0
-
-
+                    x = 0
